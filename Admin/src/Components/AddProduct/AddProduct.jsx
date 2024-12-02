@@ -42,7 +42,7 @@ function AddProduct() {
     if (responceData.success) {
       product.img=responceData.img_url;
       console.log(product);
-      await fetch('http://localhost:8000/addproduct',{ 
+      await fetch('http://localhost:8000/allproducts',{ 
         method:'POST',
         headers:{
           Accept:'application/json',
@@ -112,7 +112,7 @@ function AddProduct() {
           <label htmlFor="file-input">
             <img src={img?URL.createObjectURL(img): upload_area} className='addproduct-thumnail-img' alt="" />
           </label>
-          <input onChange={imageHandler} type="file" name='emage' id='file-input' hidden />
+          <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
         </div>
         <button onClick={()=>{Add_Product()}} className='addproduct-btn'>ADD</button>
     </div>

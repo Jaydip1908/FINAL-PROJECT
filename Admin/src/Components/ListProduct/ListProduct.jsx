@@ -43,7 +43,7 @@ function ListProduct() {
         <hr />
           {allProducts.map((product,index)=>{
             return <> < div key={index} className="listproduct-format-main listproduct-formate">
-              <img src={product.img} alt="" className="listproduct-product-icon" />
+              <img src={product.image} alt="" className="listproduct-product-icon" />
               <p>{product.name}</p>
               <p>${product.old_price}</p>
               <p>${product.new_price}</p>
