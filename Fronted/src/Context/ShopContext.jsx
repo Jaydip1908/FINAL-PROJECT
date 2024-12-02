@@ -20,11 +20,26 @@ const ShopContextProvider=(props)=>{
 
     const [cartItems,setCartItems]=useState(getDefaultCart());
 
-    useEffect(()=>{
+    // useEffect(()=>{
+    //   fetch('http://localhost:8000/allproducts')
+    //   .then((response)=>response.json())
+    //   .then((data)=>setAll_Product(data))
+    // },[])
+    useEffect(() => {
       fetch('http://localhost:8000/allproducts')
-      .then((response)=>response.json())
-      .then((data)=>setAll_Product(data))
-    },[])
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Fetched products:", data);
+          setAll_Product(data);
+        })
+        .catch((error) => console.error("Failed to fetch products:", error));
+    }, []);
+    
 
     const addToCart=(itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))

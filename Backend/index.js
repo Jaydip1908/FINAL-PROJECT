@@ -10,7 +10,7 @@ const { type } = require('os');
 const { error } = require('console');
 const { emit } = require('process') ;
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -51,7 +51,7 @@ const Product=mongoose.model("product",{
         type:String,
         require:true
     },
-    img:{
+    image:{
         type:String,
         require:true
     },
@@ -170,7 +170,7 @@ app.post('/addproduct',async (req,res)=>{
     const product=new Product ({
         id:req.body.id,
         name:req.body.name,
-        img:req.body.img,
+        image:req.body.image,
         category:req.body.category,
         new_price:req.body.new_price,
         old_price:req.body.old_price

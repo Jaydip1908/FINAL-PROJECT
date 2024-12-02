@@ -31,7 +31,7 @@ function AddProduct() {
 
     formData.append('product',img);
 
-    await fetch ("http://localhost:8000/upload",{
+    await fetch ('http://localhost:8000/upload',{
       method:'POST',
       headers:{
         Accept:'application/json',
@@ -42,11 +42,11 @@ function AddProduct() {
     if (responceData.success) {
       product.img=responceData.img_url;
       console.log(product);
-      await fetch('http://localhost:8000/allproducts',{ 
+      await fetch('http://localhost:8000/addproduct',{ 
         method:'POST',
         headers:{
           Accept:'application/json',
-          'Content-Type':'application/json',
+          // 'Content-Type':'application/json',
         },
         body:JSON.stringify(product),
       }).then((resp)=>resp.json()).then((data)=>{
