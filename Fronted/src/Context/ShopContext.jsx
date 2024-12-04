@@ -2,13 +2,13 @@ import React from "react";
 import { createContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-// import all_product from '../Components/IMG/all_product'
+import all_product from '../Components/IMG/all_product'
 
 export const ShopContext=  createContext(null);
 
 const getDefaultCart=()=>{
     let cart={};
-    for (let index = 0; index < 300+1; index++) {
+    for (let index = 0; index < all_product.length; index++) {
         cart[index]=0;
     }
     return cart;
@@ -16,7 +16,7 @@ const getDefaultCart=()=>{
 
 const ShopContextProvider=(props)=>{
 
-    const [all_product,setAll_Product]=useState([]);
+    // const [all_product,setAll_Product]=useState([]);
 
     const [cartItems,setCartItems]=useState(getDefaultCart());
 
@@ -25,20 +25,20 @@ const ShopContextProvider=(props)=>{
     //   .then((response)=>response.json())
     //   .then((data)=>setAll_Product(data))
     // },[])
-    useEffect(() => {
-      fetch('http://localhost:8000/allproducts')
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("Fetched products:", data);
-          setAll_Product(data);
-        })
-        .catch((error) => console.error("Failed to fetch products:", error));
-    }, []);
+    // useEffect(() => {
+    //   fetch('http://localhost:8000/allproducts')
+    //     .then((response) => {
+    //       if (!response.ok) {
+    //         throw new Error(`HTTP error! Status: ${response.status}`);
+    //       }
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //       console.log("Fetched products:", data);
+    //       setAll_Product(data);
+    //     })
+    //     .catch((error) => console.error("Failed to fetch products:", error));
+    // }, []);
     
 
     const addToCart=(itemId)=>{

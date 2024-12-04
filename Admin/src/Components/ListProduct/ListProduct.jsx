@@ -3,6 +3,7 @@ import './ListProduct.css'
 import cross_icon from '../../assets/cross_icon.png'
 
 function ListProduct() {
+  
 
   const [allProducts, setallProducts] = useState([]);
 
@@ -47,10 +48,11 @@ function ListProduct() {
         <p>Category</p>
         <p>Remove</p>
       </div>
-      {/* <div className="listproduct-allproducts">
+      <div className="listproduct-allproducts">
         <hr />
           {allProducts.map((product,index)=>{
-            return <> < div key={index} className="listproduct-format-main listproduct-formate">
+            return <> 
+            <div key={index} className="listproduct-format-main listproduct-formate">
               <img src={product.img} alt="" className="listproduct-product-icon" />
               <p>{product.name}</p>
               <p>${product.old_price}</p>
@@ -60,8 +62,8 @@ function ListProduct() {
             </div>
             <hr /></>
           })}
-      </div> */}
-      <div className="listproduct-allproducts">
+      </div>
+      {/* <div className="listproduct-allproducts">
         <hr />
         {allProducts.map((product) => (
           <React.Fragment key={product.id}>
@@ -87,7 +89,7 @@ function ListProduct() {
             <hr />
           </React.Fragment>
         ))}
-      </div>
+      </div> */}
 
     </div>
   )

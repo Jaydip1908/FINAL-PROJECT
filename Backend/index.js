@@ -53,11 +53,11 @@ const Product=mongoose.model("product",{
     },
     image:{
         type:String,
-        require:true
+        require:true,
     },
     category:{
         type:String,
-        require:true
+        require:true,
     },
     new_price:{
         type:Number,

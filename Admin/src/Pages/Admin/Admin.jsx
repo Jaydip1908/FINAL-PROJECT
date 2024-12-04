@@ -16,6 +16,6 @@ function Admin() {
       </Routes>
     </div>
   )
-}
+} 
 
 export default Admin
