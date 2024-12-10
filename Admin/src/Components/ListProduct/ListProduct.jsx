@@ -5,7 +5,7 @@ import cross_icon from '../../assets/cross_icon.png'
 function ListProduct() {
   
 
-  const [allProducts, setallProducts] = useState([]);
+  const [all_product, setallProducts] = useState([]);
 
   const fetchInfo = async () => {
 
@@ -50,10 +50,10 @@ function ListProduct() {
       </div>
       <div className="listproduct-allproducts">
         <hr />
-          {allProducts.map((product,index)=>{
+          {all_product.map((product,index)=>{
             return <> 
             <div key={index} className="listproduct-format-main listproduct-formate">
-              <img src={product.img} alt="" className="listproduct-product-icon" />
+              <img src={product.image} alt="" className="listproduct-product-icon" />
               <p>{product.name}</p>
               <p>${product.old_price}</p>
               <p>${product.new_price}</p>

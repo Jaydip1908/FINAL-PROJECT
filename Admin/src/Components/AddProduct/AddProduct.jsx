@@ -23,7 +23,7 @@ function AddProduct() {
   };
 
   const Add_Product=async()=>{ 
-    console.log(productDetails);
+    // console.log(productDetails);
     let responceData;
     let product=productDetails;
 
@@ -36,7 +36,7 @@ function AddProduct() {
       headers:{
         Accept:'application/json',
       },
-      body:formData,
+     body:formData,
     }).then((resp)=>resp.json()).then((data)=>{responceData=data});
 
     if (responceData.success) {
@@ -83,7 +83,7 @@ function AddProduct() {
         </div>
         <div className="addproduct-itemfield">
           <label htmlFor="file-input">
-            <img src={image?URL.createObjectURL(image): upload_area} className='addproduct-thumnail-img' alt="" />
+            <img src={image ? URL.createObjectURL(image): upload_area} className='addproduct-thumnail-img' alt="" />
           </label>
           <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
         </div>

@@ -22,5 +22,52 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: top 50px; 
     gap: 30px;
-
+}
+@media(max-width:1280px){
+    .newcollections h1{
+        font-size: 40px;
+    }
+    .newcollections hr{
+        width: 160px;
+        height: 4px;
+    }
+    .colletions{
+        gap: 10px;
+        margin-top: 30px;
+    }
+}
+@media(max-width:1024px){
+    .newcollections h1{
+        font-size: 30px;
+    }
+    .newcollections hr{
+        width: 200px;
+        height: 3px;
+    }
+    .colletions{
+        gap: 15px;
+        margin-top: 20px;
+    }
+}
+@media(max-width:800px){
+    .newcollections{
+        /* height: 50vh; */
+        gap: 6px;
+    }
+    .newcollections h1{
+        font-size: 20px;
+    }
+    .newcollections hr{
+        width: 100px;
+    }
+    .colletions{
+        gap: 3px;
+    }
+}
+@media(max-width:500px){
+    .colletions{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
 }
