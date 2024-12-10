@@ -38,9 +38,9 @@ function AddProduct() {
       },
      body:formData,
     }).then((resp)=>resp.json()).then((data)=>{responceData=data});
-
+    console.log(formData)
     if (responceData.success) {
-      product.image=responceData.image_url;
+      product.image=responceData.img_url;
       console.log(product);
       await fetch('http://localhost:8000/addproduct',{ 
         method:'POST',

@@ -51,6 +51,7 @@ function ListProduct() {
       <div className="listproduct-allproducts">
         <hr />
           {all_product.map((product,index)=>{
+            {console.log("====== img :",product.image)}
             return <> 
             <div key={index} className="listproduct-format-main listproduct-formate">
               <img src={product.image} alt="" className="listproduct-product-icon" />

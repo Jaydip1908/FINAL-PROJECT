@@ -167,6 +167,8 @@ app.post('/addproduct',async (req,res)=>{
     }else{
         id=1;
     }
+
+    
     const product=new Product ({
         id:req.body.id,
         name:req.body.name,
@@ -174,7 +176,7 @@ app.post('/addproduct',async (req,res)=>{
         category:req.body.category,
         new_price:req.body.new_price,
         old_price:req.body.old_price
-    })
+    });
     console.log(product);
     await product.save();
     console.log("Saved");
