@@ -6,13 +6,10 @@ import arrow_icon from '../IMG/breadcrum_arrow.png'
 
 function BreadCrum(props) {
 const { product } = props;
+console.log(product)
 return (
   <div className='breadcrum'>
-    HOME <img src={arrow_icon} alt="" /> 
-    SHOP <img src={arrow_icon} alt="" /> 
-    {product?.category} 
-    <img src={arrow_icon} alt="" /> 
-    {product?.name}
+    HOME <img src={arrow_icon} alt="" /> SHOP <img src={arrow_icon} alt="" /> {product?.category} <img src={arrow_icon} alt="" /> {product?.name}
 
   </div>
 )

@@ -201,7 +201,9 @@ app.get('/allproducts',async (req,res)=>{
     let products =await Product.find({});
     console.log("all products fet ");
     res.send(products);
+    // console.log(products)
 })
+
 
 //end poin for poppulaer in women
 app.get('/poppulerinwomen' ,async (req,res)=>{
@@ -243,11 +245,29 @@ app.get('/newcollection' ,async (req,res)=>{
 //add product in cartdata
 app.post('/addtocart',fetchUser, async(req,res)=>{
     // console.log(req.body,req.user);
+    console.log("added",req.body.itemId);
     let userData=await Users.findOne({_id:req.user.id});
     userData.cartData[req.body.itemId]+=1;
     await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
     res.send("Added")
 })  
+
+//remove from cart
+app.post('/removeFromCart',fetchUser, async(req,res)=>{
+    console.log("removed",req.body.itemId);
+    let userData=await Users.findOne({_id:req.user.id});
+    if (userData.cartData[req.body.itemId]>0) 
+    userData.cartData[req.body.itemId] -= 1;
+    await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+    res.send("removed")
+}) 
+
+//get caerData
+app.post('/getCart',fetchUser,async(req,res)=>{
+    console.log("getcart")
+    let userData=await Users.findOne({_id:req.user.id});
+    res.json(userData.cartData);
+})
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
