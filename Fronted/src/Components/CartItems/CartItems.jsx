@@ -9,6 +9,8 @@ const CartItems = () => {
       useEffect(() => {
         fetch('http://localhost:8000/allproducts')
           .then((response) => {
+            console.log(response);
+            
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }

@@ -15,12 +15,7 @@ import { useState,useEffect } from 'react';
 
 
 function App() {
-  // const [productId,setProductId]=useState(null);
-  // const productIds=fetch('http://localhost:8000/allproducts')
-  // // .then(response())
-  // .then((response)=>response.json())
-  // .then((data)=>setProductId(data))
-  // console.log(productId)
+ 
   const [productId, setProductId] = useState(null);
 
   useEffect(() => {
@@ -37,11 +32,11 @@ function App() {
       .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);
       });
-  }, []); // Empty dependency array ensures this runs only once
+  }, []);
 
   useEffect(() => {
-    console.log(productId); // Logs whenever productId changes
-  }, [productId]); // Logs the value after it updates
+    console.log(productId); 
+  }, [productId]); 
 
 
   return (

@@ -8,8 +8,8 @@ export const ShopContext = createContext(null);
 
 const getDefaultCart = () => {
   let cart = {};
-  for (let index = 0; index < 300 + 1; index++) {
-    cart[index] = 0;
+  for (let i = 0; i <  100+ 1; i++) {
+    cart[i] = 0;
   }
   return cart;
 }
@@ -40,25 +40,65 @@ const ShopContextProvider = (props) => {
       })
       .catch((error) => console.error("Failed to fetch products:", error));
 
-    if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:8000/getCart', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'auth-token': `${localStorage.getItem('auth-token')}`,
-          'Content-Type': 'application/json',
-        },
-        // body: JSON.stringify({ "itemId": itemId }),
-      })
-        .then((response) => response.json())
-        .then((data) => { setCartItems(data) })
+    // if (localStorage.getItem('auth-token')) {
+    //   fetch('http://localhost:8000/getCart', {
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'auth-token': `${localStorage.getItem('auth-token')}`,
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ "itemId":itemId })
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => { setCartItems(data) })
 
-    }
+    // }
   }, []);
 
 
-  const addToCart = (_id) => {
-    setCartItems((prev) => ({ ...prev, [_id]: (prev[_id] || 0) + 1 }));
+  // const addToCart = (itemId) => {
+  //   setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
+  //   if (localStorage.getItem('auth-token')) {
+  //     fetch('http://localhost:8000/addtocart', {
+  //       method: 'POST',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'auth-token': `${localStorage.getItem('auth-token')}`,
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ "itemId":itemId}),
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => { console.log(data) })
+    //   fetch('http://localhost:8000/addtocart', {
+    //     method: 'POST',
+    //     headers: {
+    //         Accept: 'application/json',
+    //         'auth-token': `${localStorage.getItem('auth-token')}`,
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ itemId }),
+    // })
+    //     .then((response) => {
+    //         if (!response.ok) {
+    //             throw new Error(`HTTP error! Status: ${response.status}`);
+    //         }
+    //         return response.json(); // Parse JSON response
+    //     })
+    //     .then((data) => {
+    //         console.log(data.message); // Log the success message
+    //     })
+    //     .catch((error) => {
+    //         console.error("Error adding to cart:", error);
+    //     });
+    
+    // }
+
+  // }
+  // console.log(cartItems) 
+  const addToCart = (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
     if (localStorage.getItem('auth-token')) {
       fetch('http://localhost:8000/addtocart', {
         method: 'POST',
@@ -67,14 +107,18 @@ const ShopContextProvider = (props) => {
           'auth-token': `${localStorage.getItem('auth-token')}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ "itemId": itemId }),
+        body: JSON.stringify({ itemId: itemId }),
       })
         .then((response) => response.json())
-        .then((data) => { console.log(data) })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
     }
+};
 
-  }
-  // console.log(cartItems) 
 
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))

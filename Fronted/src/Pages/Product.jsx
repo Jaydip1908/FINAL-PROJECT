@@ -37,7 +37,7 @@ function Product() {
   }, [allproduct]); // Logs the value after it updates
 
   const product = allproduct?.find((pro) => pro._id === productId); // Use optional chaining
-  console.log(product);
+  // console.log(product);
   
   return (
     <div>
