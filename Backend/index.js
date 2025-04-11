@@ -7,7 +7,7 @@ const multer=require('multer');
 const path=require('path');
 const cors = require('cors');
 const { type } = require('os');
-const { error } = require('console');
+// const { error } = require('console');
 const { emit } = require('process') ;
 
 app.use(cors());
